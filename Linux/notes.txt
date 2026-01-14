@@ -1,0 +1,238 @@
+BareMetal - OS is installed directly on hardware, no Hypervisor in between, high performance compared to virtual server
+
+AWS uses HVM[Hardware virtual machine] virtualization, it uses AWS Nitro [nvme], previously it was using Xen [xvda] 
+
+semver.org -> To  know about versioning 20.01.6
+
+versions we are using:
+Ubuntu - 24.04
+
+To print content
+cat demo.txt
+sed '' demo.txt
+sed -n 'p' demo.txt
+awk '{print}' demo.txt
+
+Linux:
+
+
+Day 1: on-prem, Cloud
+SELinux (Security-Enhanced Linux) is a powerful security module in the Linux kernel that enforces Mandatory Access Control (MAC) policies, adding a crucial layer beyond standard Linux permissions (DAC) to confine processes and users.
+On-Premises (On-Prem)
+•	On-prem is when your servers and infrastructure are physically located in your organization’s own datacenter (company owned buildings).
+•	Company is responsible for everything — hardware, networking, power, cooling, admins and security.
+•	It gives full control but requires heavy capital cost and maintenance.
+Server
+•	A server is just a machine/computer or software system that provides services or resources to other computers or clients over a network.
+•	In today’s context, it could be a Virtual Machine, or even a cloud instance like an EC2
+example: Web Server, Application Server, Database Server, File Server, Mail Server, Game Server etc.
+Physical server → A real hardware machine.
+Virtual server → A software-based server running inside a VM or container.
+Bare Metal
+Bare metal refers to running workloads directly on physical hardware, without any hypervisor or virtualization layer in between.
+You get 100% of the machine’s CPU, memory, storage, and network, exactly as the hardware provides it.
+Unlike virtual machines, there is no resource sharing, no noisy neighbors, and no hypervisor overhead.
+Key Characteristics
+•	Direct hardware access – OS runs straight on the server
+•	Highest performance & lowest latency
+•	Full control over BIOS, firmware, kernel tuning, CPU pinning, NUMA
+•	Predictable performance (critical for real-time systems)
+•	Manual scaling compared to cloud VMs
+Cloud
+•	Cloud is basically someone else’s computer — but with industrial-grade scalability and automation.
+•	You don’t buy hardware; instead, you rent servers, storage, databases, and more on demand.
+•	It lets you focus on your application or service, while the provider takes care of the messy infrastructure — power, cooling, networking, redundancy, the whole lot.
+•	It evolved from traditional datacenters to offer agility — spin up 100 servers in minutes, pay-as-you-go, and scale down when you don’t need them. It’s not just cost savings — it’s about speed, flexibility, and global reach.
+Public Cloud
+•	Public cloud is what most people refer to when they say ‘cloud’ — platforms like AWS, Azure, or GCP.
+•	The infrastructure is owned and managed by the provider, and you’re just renting what you need — compute, storage, databases, etc.
+•	It’s cost-efficient, globally available, and highly scalable, but you share physical resources with others.
+Private Cloud
+•	Private cloud gives you cloud-like flexibility, but the infrastructure is dedicated to your organization — either on-prem or hosted by a third party.
+•	Tools like OpenStack or VMware help you build it. It’s ideal for security-sensitive workloads, compliance, or when you need more control over your environment.
+In-House
+In-house usually refers to custom-built software or infrastructure managed by your own team, regardless of where it’s hosted. For example, even on cloud, if your team builds and manages everything end-to-end, that’s in-house expertise. 
+
+
+
+Day 2:  Introduction
+Ubuntu
+Most Popular for devs, cloud, and general use.
+ 
+Red Hat Enterprise Linux (RHEL)
+Enterprise-grade OS — stable, long support cycles.
+ 
+CentOS
+Upstream of RHEL. Used for testing RHEL-like environments.
+ 
+Debian
+Very stable, used in backend servers, cloud VMs.
+ 
+Amazon Linux
+Optimized for AWS (fast boot, tuned kernel).
+ 
+Overall 
+ 
+Operating System Usage on Servers (2025) — Industry Estimate
+ 
+
+Day 3:  Connect to Remote EC2 (SSH)
+Create an ec2 instance (Server, Virtual Machine, Node)
+Step-by-Step Guide to Create an EC2 Instance
+1.	Log in to AWS Management Console:
+•	Go to the AWS Management Console and log in with your credentials.
+2.	Navigate to EC2:
+•	In the AWS Management Console, search for “EC2” in the services search bar and select it.
+3.	Launch Instance:
+•	Click on the “Launch Instance” button.
+4.	Choose an Amazon Machine Image (AMI):
+•	Select an AMI that suits your needs (e.g., Amazon Linux, Ubuntu, RHEL). You can choose from free-tier eligible options if you're just getting started.
+5.	Choose an Instance Type:
+•	Select the instance type (e.g., t2.micro for free tier). Click “Next: Configure Instance Details” after making your selection.
+6.	Configure Instance Details:
+•	Set the number of instances, network settings, and other details. For a simple setup, the default settings are usually sufficient. Click “Next: Add Storage.”
+7.	Add Storage:
+•	Modify the storage size if necessary. The default is typically sufficient, but you can add more if needed. Click “Next: Add Tags.”
+8.	Review and Launch:
+•	Review your instance configuration. Click “Launch.”
+9.	Select or Create a Key Pair:
+•	If you don’t have a key pair, create a new one and download it (keep it safe; you won't be able to download it again). If you have one, select it. Click “Launch Instances.”
+10.	View Instances:
+•	Click on “View Instances” to see your new EC2 instance. It may take a few minutes to initialize.
+Accessing Your EC2 Instance
+•	For Linux Instances:
+•	Use SSH to connect. The command will look like this:
+ssh -i /path/to/your-key.pem <username>@<your-ec2-public-ip>
+For an Amazon Linux AMI, the username is ec2-user.
+For a CentOS AMI, the username is centos or ec2-user.
+For a Debian AMI, the username is admin.
+For a Fedora AMI, the username is fedora or ec2-user.
+For a RHEL AMI, the username is ec2-user or root.
+For a SUSE AMI, the username is ec2-user or root.
+For an Ubuntu AMI, the username is ubuntu.
+For an Oracle AMI, the username is ec2-user.
+For a Bitnami AMI, the username is bitnami.
+Preffered SSH client: 
+•	git bash Download
+•	Mobaxterm Download
+Day 4:  pwd, ls, tree, rm, mkdir, touch
+Linux keynotes to know 
+•	In Linux commands are case-sensitive (all commands are in lowercase)
+•	A folder is called a Directory in Linux
+•	Everything is a file in Linux, including directories, devices, and processes.
+•	The root user (root) has full administrative privileges.
+•	/ (root directory) is the top-level directory in the Linux filesystem.
+•	Hidden files start with a dot (.), e.g., .bashrc.
+•	Use man followed by a command (e.g., man ls) to see the manual page.
+Unix tradition: Almost all commands follow lowercase due to Unix/Linux history and POSIX standards.
+Case-sensitive in Linux: Linux treats ls and LS as different. Only ls exists, so LS gives “command not found”.
+Simplicity & consistency: Lowercase keeps commands predictable and easy to type.
+ 
+Convention	Description
+-<letter>	Short option; typically 1 letter, often stackable (e.g., -xzvf)
+--<word>	Long option; more readable, not usually combinable
+= for long options	Long options often allow assignment (--output=file.txt)
+Use --help	Most commands support --help to print usage
+Option order matters	Sometimes, positional arguments matter after options
+ 
+man command (manual)
+ 
+man <command>
+man ls
+ 
+Common keys when reading man:
+• 🔼 / 🔽 – Scroll up/down
+• /<keyword> – Search for a word
+• n – Next match
+• q – Quit
+ 
+pwd
+The pwd command stands for "print working directory."
+It prints the path of the working directory. 
+$ pwd
+/home/ubuntu
+ 
+ls (list files and directories)
+•	To list with details (long format): ls -l
+•	To list with creation time sorted (recent at the top): ls -t
+•	To list reverse order: ls -r
+•	All the above together: ls -lrt (OR) ll
+rm - Delete files/directories
+Use the rm command to delete files and directories. But rm cannot simply delete a directory. Use “rm -r” to delete a directory. In this case, it deletes both the folder and the files in it.
+    To remove/delete a file     
+        rm file_name 
+    To remove/delete a Directory    
+        rm -r directory
+
+cd (change directory - cd)
+•	switch/change to a folder/Directory in Linux
+   Syntax: cd <path>/<location>
+   example: 1. To change to a Directory in the current location
+                        cd test
+mkdir (make directory - mkdir)
+•	To create a directory: mkdir <directory_name>
+           example: mkdir test
+•	To create multiple directories:
+      mkdir <directory_name> <directory_name1> <directory_name2> ..... <directory_name>
+           note: directory names with space separated    
+           example: mkdir test test1 test2 ...   
+tree 
+Inastall tree 
+#Before installing any software/tools, refresh the package list to get the latest package
+sudo apt update
+
+#Once the package list is updated, install the desired software using apt
+sudo apt install tree
+The tree command in Linux is used to display the contents of current directory in a tree-like format. It recursively lists all files and directories within a specified directory.
+ 
+1.	Display Only Directories: tree -d
+2.	List All Files Including Hidden Files: tree -a
+3.	Limit the Depth of the Tree: tree -L 2
+4.	Display Full Path Prefix for Each File: tree -f 
+5.	Print the Size of Each File: tree -h
+touch
+touch is used to create empty files or update file timestamps (access & modification time).
+
+#Create a new empty file
+       touch file.txt
+
+#Create multiple files
+       touch a.txt b.txt c.txt
+
+#Update timestamp of an existing file
+       touch file.txt
+
+#Create file with full path
+       touch /home/ubuntu/test.log
+
+
+Day 5:  cp (copy), mv (move/rename)
+cp - Copy the file from one location to another 
+cp command copies files and directories through the command line. 
+cp [OPTIONS] <SOURCE> <DESTINATION>
+ 
+To copy to a different location
+cp file1.txt /home/ubuntu/Dir1
+To copy file and rename
+cp file1.txt file2.txt
+Copy a directory recursively
+cp -r dir1/ dir2/
+Copy multiple files to  directory
+cp file1.txt file2.txt file3.txt file4.txt /home/user/Dir1/
+Ask before overriting file (Prompt y/n)
+cp -i file1.txt /home/user/Dir1/
+mv - Rename or Move the file from one location to another
+
+rename or move the file from one location to another (mv)
+
+•	mv command to move files and directories through the command line.
+•	We can also use the mv command to rename a file/directory.
+    To rename a file/directory
+        mv old_filename new_filename
+        mv old_directory new_directory
+    To move to a different location (cut and paste)    
+        mv <source> <destination>
+
+
+Day 6: free, top, htop, lscpu, uptime, ps, hostnamectl
+
