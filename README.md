@@ -1,7 +1,1 @@
-# python_scripting
-
-Comments: Comments in python are not executed.
-    Types:
-        # -> Single line comment
-        ''' ''' or """ """ -> Multi line comments
-        Shortcut -> Select lines that you want to commit and press ctrl /
+#Python - This folder contains notes and codes related to python scripting that are required for devops
