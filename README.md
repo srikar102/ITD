@@ -2,5 +2,6 @@
 
 Comments: Comments in python are not executed.
     Types:
-        # - Single line comment
-        ''' ''' - Multi line comments
+        # -> Single line comment
+        ''' ''' or """ """ -> Multi line comments
+        Shortcut -> Select lines that you want to commit and press ctrl /
