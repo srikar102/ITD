@@ -286,6 +286,7 @@ The lscpu command in Linux displays detailed CPU architecture information. It fe
 Swap Info
 swapon --show
 
+
 Day 7: df, ifconfig, ip, Load Average
 df - Disk Free (filesystem view)
 •	The command df stands for "Disk Free" or some refer as "Disk Filesystem".
@@ -341,6 +342,7 @@ curl icanhazip.com
 curl api.ipify.org
 curl ident.me
 
+
 Day 8: wget, curl, ports
 wget
 •	wget is a command-line utility used to retrieve files from the web using HTTP, HTTPS, and FTP protocols.
@@ -356,12 +358,6 @@ wget -r https://example.com
 Download a file in the background:
 wget -b https://example.com/file.zip
  
- 
- 
- 
- 
- 
- 
 curl
 •	curl is used to access a website and retrieve its content
 •	curl is a command-line tool used for transferring data to or from a server, and it supports multiple protocols such as HTTP, HTTPS, FTP, and more.
@@ -375,6 +371,7 @@ curl -s -o /dev/null -w "%{http_code}" https://example.com
 Port
 A port is a logical endpoint in a network communication used to identify specific processes or services running on a server. When data is transmitted over a network, it is sent to a specific IP address and a port number to reach the correct service/Applicaiton running on the destination server.
  
+
 
 Day 9: VI Editor, echo, > Redirect, >> Append, | (pipe), &&, ||, ;
 
@@ -472,6 +469,7 @@ ps -ef | grep <process_name>
 ls *.txt | xargs -I {} mv {} {}.bak
 6.	Copying .conf Files to a Backup Directory
 find /etc -type f -name "*.conf" | xargs -I {} cp {} /backup_path
+
 
 Day 10: grep
 grep (To search pattern/string in a file or content)
