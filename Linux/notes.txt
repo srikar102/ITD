@@ -221,6 +221,9 @@ Copy multiple files to  directory
 cp file1.txt file2.txt file3.txt file4.txt /home/user/Dir1/
 Ask before overriting file (Prompt y/n)
 cp -i file1.txt /home/user/Dir1/
+copy file without changing timestamp and permissions
+cp -p file.txt  /home/user/Dir1/
+
 mv - Rename or Move the file from one location to another
 
 rename or move the file from one location to another (mv)
