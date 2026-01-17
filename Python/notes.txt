@@ -207,3 +207,8 @@ print(big)  # Works fine!
 Referece
  
 https://docs.python.org/3/library/stdtypes.html
+
+
+
+Day 21: Strings
+
