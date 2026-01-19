@@ -57,6 +57,12 @@ count = numbers.count(1)  # count occurrences
 index = numbers.index(4)  # find index of value
 copy = numbers.copy()  # shallow copy
 
+# COPYING LISTS
+fruits = ["apple", "banana", "cherry"]
+fruits_copy = fruits.copy()
+print(fruits_copy)  # ['apple', 'banana', 'cherry']
+print(id(fruits), id(fruits_copy))  # different memory addresses
+
 # ITERATION
 for fruit in fruits:
     print(fruit)
@@ -71,3 +77,73 @@ evens = [x for x in range(10) if x % 2 == 0]  # [0, 2, 4, 6, 8]
 # LENGTH & MEMBERSHIP
 print(len(fruits))  # number of items
 print("apple" in fruits)  # True/False
+
+# SHALLOW COPY vs DEEP COPY
+
+
+# Shallow Copy: copies only the top level, nested objects are referenced
+nested_list = [[1, 2], [3, 4], [5, 6]]
+shallow = nested_list.copy()
+
+shallow[0][0] = 999  # modify nested element
+print(f"Original: {nested_list}")  # [[999, 2], [3, 4], [5, 6]] - affected!
+print(f"Shallow: {shallow}")      # [[999, 2], [3, 4], [5, 6]]
+
+# Deep Copy: copies everything including nested objects
+import copy    # need to import copy module
+nested_list = [[1, 2], [3, 4], [5, 6]]
+deep = copy.deepcopy(nested_list)
+
+deep[0][0] = 999  # modify nested element
+print(f"Original: {nested_list}")  # [[1, 2], [3, 4], [5, 6]] - NOT affected
+print(f"Deep: {deep}")            # [[999, 2], [3, 4], [5, 6]]
+
+# CONVERTING STRING TO LIST AND LIST TO STRING
+
+# String to List
+text = "hello world"
+list_from_str = list(text)  # converts each character to a list item
+print(list_from_str)  # ['h', 'e', 'l', 'l', 'o', ' ', 'w', 'o', 'r', 'l', 'd']
+
+# String to List (split by delimiter)
+sentence = "apple,banana,cherry"
+fruits_list = sentence.split(",")  # split by comma
+print(fruits_list)  # ['apple', 'banana', 'cherry']
+
+words = "the quick brown fox".split()  # split by whitespace (default)
+print(words)  # ['the', 'quick', 'brown', 'fox']
+
+# List to String
+letters = ['h', 'e', 'l', 'l', 'o']
+string_from_list = "".join(letters)  # join with empty string
+print(string_from_list)  # hello
+
+fruits = ["apple", "banana", "cherry"]
+result = ", ".join(fruits)  # join with comma and space
+print(result)  # apple, banana, cherry
+
+# List of numbers to String
+numbers = [1, 2, 3, 4, 5]
+numbers_str = ",".join(map(str, numbers))  # convert each number to string first
+print(numbers_str)  # 1,2,3,4,5
+
+# SORTING NUMBERS IN STRING FORMAT
+
+# List of numbers as strings
+numbers_str = ["10", "5", "25", "3", "100", "15"]
+
+# Ascending order (as strings - lexicographic sort)
+numbers_str_asc = sorted(numbers_str)
+print(f"Ascending (as strings): {numbers_str_asc}")  # ['10', '15', '25', '3', '5', '100']
+
+# Descending order (as strings)
+numbers_str_desc = sorted(numbers_str, reverse=True)
+print(f"Descending (as strings): {numbers_str_desc}")  # ['5', '3', '25', '15', '100', '10']
+
+# Ascending order (convert to integers for numeric sort)
+numbers_str_asc_numeric = sorted(numbers_str, key=int)
+print(f"Ascending (numeric): {numbers_str_asc_numeric}")  # ['3', '5', '10', '15', '25', '100']
+
+# Descending order (numeric sort)
+numbers_str_desc_numeric = sorted(numbers_str, key=int, reverse=True)
+print(f"Descending (numeric): {numbers_str_desc_numeric}")  # ['100', '25', '15', '10', '5', '3']
